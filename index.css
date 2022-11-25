@@ -1,7 +1,12 @@
+html {
+    scroll-behavior: smooth;
+  }
+
 body {
     background-color: #050505;
     padding: 0;
     margin: 0;
+    height: 3000px;
     background-size: 300px 300px;
     background-image:
         linear-gradient(to right, rgb(40, 40, 40) 1px, transparent 0px),
@@ -39,27 +44,18 @@ body {
 
 
 .container {
-    display: table;
+    height: 100%;
+    width: 80%;
 }
 
-.text {
+.home {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     margin-left: 70px;
 }
 
-.text h1 {
-    color: white;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-.text p {
-    color: white;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-.text h1::after{
+.home h1::after{
     content: "";
     width: 5px;
     height: 20px;
@@ -67,6 +63,29 @@ body {
     display: inline-block;
     animation: cursor-blink 1.5s steps(2) infinite;
 }
+
+.about {
+    position: absolute;
+    top: 1400px;
+    margin-left: 70px;
+}
+
+.contact {
+    position: absolute;
+    top: 2400px;
+    margin-left: 70px;
+}
+
+h1 {
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+p {
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+}
+
 
 @keyframes cursor-blink {
     0% {
