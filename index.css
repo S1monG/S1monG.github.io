@@ -1,16 +1,19 @@
 html {
     scroll-behavior: smooth;
-  }
+}
 
 body {
     background-color: #050505;
     padding: 0;
     margin: 0;
-    height: 3000px;
+    height: 3150px;
     background-size: 300px 300px;
+/*     background: 
+        linear-gradient(to bottom, #050505 33%, #6f0c44 66%, #260d48 100%); */
     background-image:
         linear-gradient(to right, rgb(40, 40, 40) 1px, transparent 0px),
         linear-gradient(to bottom, rgb(40, 40, 40) 1px, transparent 0px);
+
 }
 
 .sidebar {
@@ -74,6 +77,16 @@ body {
     position: absolute;
     top: 2400px;
     margin-left: 70px;
+}
+
+.contact a {
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: 1000;
+    color: white;
+    display: block;
+    margin-bottom: 50px;
 }
 
 h1 {
