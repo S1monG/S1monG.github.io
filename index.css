@@ -1,19 +1,24 @@
 html {
     scroll-behavior: smooth;
+
 }
 
 body {
-    background-color: #050505;
     padding: 0;
     margin: 0;
     height: 3150px;
+
+    background-color: #050505;
     background-size: 300px 300px;
+    background-image:
+    linear-gradient(to right, rgb(40, 40, 40) 1px, transparent 0px),
+    linear-gradient(to bottom, rgb(40, 40, 40) 1px, transparent 0px);
+    
+    background-position-x: 120px;
+    background-position-y: 70px;
+    
 /*     background: 
         linear-gradient(to bottom, #050505 33%, #6f0c44 66%, #260d48 100%); */
-    background-image:
-        linear-gradient(to right, rgb(40, 40, 40) 1px, transparent 0px),
-        linear-gradient(to bottom, rgb(40, 40, 40) 1px, transparent 0px);
-
 }
 
 .sidebar {
