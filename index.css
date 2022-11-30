@@ -7,12 +7,13 @@ body {
     padding: 0;
     margin: 0;
     height: 3150px;
+    overscroll-behavior: none;
 
     background-color: #050505;
     background-image:
         linear-gradient(to right, rgb(40, 40, 40) 1px, transparent 0px),
         linear-gradient(to bottom, rgb(40, 40, 40) 1px, transparent 0px),
-        linear-gradient(to bottom, #050505 33%, #6f0c44 66%, #260d48 100%);
+        linear-gradient(to bottom, #050505 33%, #6f0c449d 66%, #6f0c44ba 100%);
     
     background-repeat: repeat, repeat, no-repeat;
     background-size: 300px 300px, 300px 300px, cover;
@@ -62,6 +63,10 @@ body {
     margin-left: 70px;
 }
 
+.home h1 {
+    animation: typing 3.5s steps(30, end);
+}
+
 .home h1::after{
     content: "";
     width: 5px;
@@ -103,6 +108,14 @@ p {
     font-family: 'Courier New', Courier, monospace;
 }
 
+@keyframes typing {
+    from {
+        width: 0;
+    } 
+    to {
+        width: 100%;
+    }
+}
 
 @keyframes cursor-blink {
     0% {
