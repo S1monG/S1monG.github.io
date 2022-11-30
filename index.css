@@ -9,16 +9,15 @@ body {
     height: 3150px;
 
     background-color: #050505;
-    background-size: 300px 300px;
     background-image:
-    linear-gradient(to right, rgb(40, 40, 40) 1px, transparent 0px),
-    linear-gradient(to bottom, rgb(40, 40, 40) 1px, transparent 0px);
+        linear-gradient(to right, rgb(40, 40, 40) 1px, transparent 0px),
+        linear-gradient(to bottom, rgb(40, 40, 40) 1px, transparent 0px),
+        linear-gradient(to bottom, #050505 33%, #6f0c44 66%, #260d48 100%);
     
-    background-position-x: 120px;
-    background-position-y: 70px;
-    
-/*     background: 
-        linear-gradient(to bottom, #050505 33%, #6f0c44 66%, #260d48 100%); */
+    background-repeat: repeat, repeat, no-repeat;
+    background-size: 300px 300px, 300px 300px, cover;
+    background-position-x: 120px, 120px, 0;
+    background-position-y: 70px, 70px, 0;
 }
 
 .sidebar {
