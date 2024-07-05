@@ -13,7 +13,6 @@ function App() {
         <Route path="/" element={<CurriculumVitae/>} />
         <Route path="/api" element={<div>API stuff WIP</div>} />
         <Route path="/cache" element={<div>to be continued</div>} />
-        <Route path="/funky" element={<iframe width='100%' height='600px' title='funky' src='../public/cvEnglish.pdf'></iframe>} />
       </Routes>
     </Router>
   )
