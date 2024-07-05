@@ -22,7 +22,6 @@ const CenteredTabs: FC = (): ReactElement => {
                 <Tab label="Me" to="/" component={Link}/>
                 <Tab label="API Platform" to="/api" component={Link} />
                 <Tab label="to be continued" to="/cache" component={Link} disabled />
-                <Tab label="funky behavior" to="/funky" component={Link} />
             </Tabs>
         </Box>
     

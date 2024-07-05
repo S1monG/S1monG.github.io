@@ -9,7 +9,6 @@ function App() {
       <Header title="Okayy lets go" />
       <CenteredTabs />
       <Routes>
-        {/* change the elements to functional components when ready */}
         <Route path="/" element={<CurriculumVitae/>} />
         <Route path="/api" element={<div>API stuff WIP</div>} />
         <Route path="/cache" element={<div>to be continued</div>} />
