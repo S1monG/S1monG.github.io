@@ -1,9 +1,10 @@
+import { FC, ReactElement } from 'react'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import CenteredTabs from "./components/CenteredTabs";
 import CurriculumVitae from "./components/CurriculumVitae";
 
-function App() {
+const App: FC = (): ReactElement => {
   return (
     <Router>
       <Header title="Okayy lets go" />
