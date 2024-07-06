@@ -6,8 +6,8 @@ import { Box, Container, Typography } from '@mui/material'
 const Me: FC = (): ReactElement => {
     return (
         <Container>
-            <Typography variant="h3" sx={{ mb: 2}}>Hello! I'm Simon</Typography>
-            <Typography variant="body1">
+            <Typography variant="h3"  fontFamily='monospace' marginY='10px'>Hello! I'm Simon</Typography>
+            <Typography variant="body1" fontFamily='monospace'>
                 A Computer Science and Engineering student at LTH.<br/>
                 <br/>
                 This is my Portfolio Website together with some features I occasionally use and kind of a playground for me<br/>
