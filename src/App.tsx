@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
 import Header from "./components/Header";
-import CenteredTabs from "./components/CenteredTabs";
+import CenteredTabs from "./tabs/CenteredTabs";
 import Me from "./tabs/Me";
 import { PaletteTheme } from './utils/Theme';
 import { getDesignTokens } from './utils/Theme';
@@ -20,9 +20,9 @@ const App: FC = (): ReactElement => {
         <CssBaseline />
         <Router>
 
-        <ColorModeContext.Provider value={{ themeMode, setThemeMode }}>
-          <Header title="Okayy lets go" />
-        </ColorModeContext.Provider>
+          <ColorModeContext.Provider value={{ themeMode, setThemeMode }}>
+            <Header title="Okayy lets go" />
+          </ColorModeContext.Provider>
           <CenteredTabs />
 
           <Routes>

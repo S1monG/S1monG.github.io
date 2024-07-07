@@ -1,6 +1,13 @@
-import { amber, deepOrange, grey } from "@mui/material/colors";
 
 export type PaletteTheme = 'light' | 'dark';
+
+/* LIGHT MODE PALETTE
+--lavender-web: #e8e1efff;
+--mint-green: #d9fff8ff;
+--tea-green: #c7ffdaff;
+--tea-green-2: #c4f4c7ff;
+--cambridge-blue: #9bb291ff;
+*/
 
 export const getDesignTokens = (mode: PaletteTheme) => ({
     palette: {
@@ -8,25 +15,14 @@ export const getDesignTokens = (mode: PaletteTheme) => ({
       ...(mode === 'light'
         ? {
             // palette values for light mode
-            primary: amber,
-            divider: amber[200],
-            text: {
-              primary: grey[900],
-              secondary: grey[800],
+            primary: {
+                main: '#e8e1efff',
+            },
+            secondary: {
+                main: '#d9fff8ff',
             },
           }
-        : {
-            // palette values for dark mode
-            primary: deepOrange,
-            divider: deepOrange[700],
-            background: {
-              default: deepOrange[900],
-              paper: deepOrange[900],
-            },
-            text: {
-              primary: '#fff',
-              secondary: grey[500],
-            },
-          }),
-    },
+        : { /* palette values for dark mode  */ }
+      )
+    }
 });

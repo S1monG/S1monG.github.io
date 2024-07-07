@@ -15,8 +15,8 @@ const CenteredTabs: FC = (): ReactElement => {
             <Tabs 
                 value={tab}
                 onChange={handleChange}
-                textColor="secondary"
-                indicatorColor="secondary" 
+                textColor="inherit"
+                indicatorColor="primary"
                 centered
             >
                 <Tab label="Me" to="/" component={Link}/>
