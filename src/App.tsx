@@ -16,12 +16,13 @@ const App: FC = (): ReactElement => {
   const theme = useMemo(() => createTheme(getDesignTokens(themeMode)), [themeMode])
 
   return (
-    <ColorModeContext.Provider value={{ themeMode, setThemeMode }}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Router>
 
+        <ColorModeContext.Provider value={{ themeMode, setThemeMode }}>
           <Header title="Okayy lets go" />
+        </ColorModeContext.Provider>
           <CenteredTabs />
 
           <Routes>
@@ -31,7 +32,6 @@ const App: FC = (): ReactElement => {
           </Routes>
         </Router>
       </ThemeProvider>
-    </ColorModeContext.Provider>
   )
 }
 

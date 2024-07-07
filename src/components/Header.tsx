@@ -14,7 +14,7 @@ const Header: FC<Props> = ({ title }): ReactElement => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{background: 'lightgray'}}>
+      <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1, textAlign: 'center' }}>
             {title}
