@@ -1,6 +1,6 @@
 import { FC, ReactElement } from 'react'
-import CurriculumVitae from '../components/CurriculumVitae'
-import DownloadCV from '../components/DownloadCV'
+import CurriculumVitae from '../components/ME/CurriculumVitae'
+import DownloadCV from '../components/ME/DownloadCV'
 import { Box, Container, Typography } from '@mui/material'
 
 const Me: FC = (): ReactElement => {

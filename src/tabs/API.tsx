@@ -1,6 +1,6 @@
 import { Box, Container, Divider } from '@mui/material';
 import { FC, ReactElement, useState } from 'react';
-import Request from '../components/Request';
+import Request from '../components/API/Request';
 
 const sendRequest = async (method: string, url: string) => {
   try {
