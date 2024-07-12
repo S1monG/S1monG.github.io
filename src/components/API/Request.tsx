@@ -1,24 +1,23 @@
-import { Box, FormControl, InputLabel, Select, MenuItem, TextField, Button, Stack } from '@mui/material';
+import { Box, FormControl, InputLabel, Select, MenuItem, TextField, Button } from '@mui/material';
 import { FC, ReactElement, useState } from 'react'
-import ParamTable, { Param } from './ParamTable'
+import ParamTable from './ParamTable'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import ExpandLessIcon from '@mui/icons-material/ExpandLess'
-
-export type RESTMethod = 'GET' | 'POST' | 'PUT' | 'DELETE';
+import { Parameter, RequestData, RESTMethod } from '../../types/APIInterfaces';
 
 interface Props {
-    sendRequest: (method: RESTMethod, url: string) => void
+    sendRequest: (data: RequestData) => void
 }
 
 const Request: FC<Props> = ({ sendRequest }: Props): ReactElement => {
     const [method, setMethod] = useState<RESTMethod>('GET')
     const [url, setUrl] = useState('')
 
-    const [headerParams, setHeaderParams] = useState<Param[]>([{ key: '', value: '' }]);
-    const [showHeaderParams, setShowHeaderParams] = useState<boolean>(false);
+    const [headers, setHeaders] = useState<Parameter[]>([{ key: '', value: '' }]);
+    const [showHeaders, setShowHeaders] = useState(false);
 
-    const [queryParams, setQueryParams] = useState<Param[]>([{ key: '', value: '' }]);
-    const [showQueryParams, setShowQueryParams] = useState<boolean>(false);
+    const [queries, setQueries] = useState<Parameter[]>([{ key: '', value: '' }]);
+    const [showQueries, setShowQueries] = useState(false);
 
     return (
         <>
@@ -53,30 +52,36 @@ const Request: FC<Props> = ({ sendRequest }: Props): ReactElement => {
                     variant='contained' 
                     color='secondary' 
                     style={{ minWidth: 120 }}
-                    onClick={() => sendRequest(method, url)}
+                    onClick={() => sendRequest({
+                        method, 
+                        url,
+                        headers,
+                        queries,
+                        body: ''
+                    })}
                 >Send</Button>
             </Box>
 
             <Box display='flex' flexDirection='column' alignItems='start'>
                 <Button
                     sx={{marginTop: '40px'}}
-                    onClick={() => setShowHeaderParams(!showHeaderParams)}
-                    endIcon={showHeaderParams ? <ExpandLessIcon/> : <ExpandMoreIcon/>}
+                    onClick={() => setShowHeaders(!showHeaders)}
+                    endIcon={showHeaders ? <ExpandLessIcon/> : <ExpandMoreIcon/>}
                     color='secondary'
                 >
                     Header Parameters
                 </Button>
-                {showHeaderParams && <ParamTable params={headerParams} setParams={setHeaderParams} />}
+                {showHeaders && <ParamTable params={headers} setParams={setHeaders} />}
 
                 <Button
                     sx={{marginTop: '40px'}}
-                    onClick={() => setShowQueryParams(!showQueryParams)}
-                    endIcon={showQueryParams ? <ExpandLessIcon/> : <ExpandMoreIcon/>}
+                    onClick={() => setShowQueries(!showQueries)}
+                    endIcon={showQueries ? <ExpandLessIcon/> : <ExpandMoreIcon/>}
                     color='secondary'
                 >
                     Query Parameters
                 </Button>
-                {showQueryParams && <ParamTable params={queryParams} setParams={setQueryParams} />}
+                {showQueries && <ParamTable params={queries} setParams={setQueries} />}
             </Box> 
         </>
     )

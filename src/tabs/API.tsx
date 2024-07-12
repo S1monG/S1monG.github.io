@@ -1,15 +1,26 @@
 import { Box, Container, Divider } from '@mui/material';
 import { FC, ReactElement, useState } from 'react';
-import Request from '../components/API/Request';
+import Request from '../components/API/Request'
+import { RequestData } from '../types/APIInterfaces';
 
-const sendRequest = async (method: string, url: string) => {
+const sendRequest = async (data: RequestData) => {
+  const headers = new Headers()
+  data.headers.forEach(header => headers.append(header.key, header.value))
+
+  const query = new URLSearchParams()
+  data.queries.forEach(param => query.append(param.key, param.value))
+
   try {
-    const response = await fetch(url, { method });
+    const response = await fetch(`${data.url}?${query.toString()}`, 
+      { 
+        method: data.method,
+        headers,
+      })
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-    const data = await response.json();
-    return data;
+    const jsonResponse = await response.json();
+    return jsonResponse;
   } catch (error) {
     return { error: error instanceof Error ? error.message : "An unknown error occurred"};
   }
@@ -18,9 +29,9 @@ const sendRequest = async (method: string, url: string) => {
 const API: FC = (): ReactElement => {
   const [responseData, setResponseData] = useState<string | undefined>(undefined);
 
-  const handleSendRequest = async (method: string, url: string) => {
-    const data = await sendRequest(method, url);
-    setResponseData(data);
+  const handleSendRequest = async (data: RequestData) => {
+    const response = await sendRequest(data)
+    setResponseData(response)
   };
 
   return (

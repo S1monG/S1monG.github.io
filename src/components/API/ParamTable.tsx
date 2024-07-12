@@ -2,15 +2,11 @@ import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, 
 import { FC, ReactElement } from 'react'
 import DeleteIcon from '@mui/icons-material/Delete'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
-
-export interface Param {
-    key: string,
-    value: string
-}
+import { Parameter } from '../../types/APIInterfaces';
 
 interface Props {
-    params: Param[]
-    setParams: (params: Param[]) => void
+    params: Parameter[]
+    setParams: (params: Parameter[]) => void
 }
 
 const ParamTable: FC<Props> = ({ params, setParams}: Props): ReactElement => {
