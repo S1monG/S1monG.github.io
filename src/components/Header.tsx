@@ -1,6 +1,6 @@
-import { AppBar, Box, IconButton, Toolbar, Typography } from "@mui/material"
-import { ReactElement, FC, useContext } from "react"
-import { ColorModeContext } from "../utils/ColorModeContext"
+import { AppBar, Box, IconButton, Toolbar, Typography } from '@mui/material'
+import { ReactElement, FC, useContext } from 'react'
+import { ColorModeContext } from '../utils/ColorModeContext'
 import LightModeIcon from '@mui/icons-material/LightMode'
 import DarkModeIcon from '@mui/icons-material/DarkMode'
 

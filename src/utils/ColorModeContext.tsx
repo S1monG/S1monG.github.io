@@ -1,5 +1,5 @@
-import { createContext } from "react"
-import { PaletteTheme } from "./Theme"
+import { createContext } from 'react'
+import { PaletteTheme } from './Theme'
 
 interface ColorModeContextType {
     themeMode: PaletteTheme

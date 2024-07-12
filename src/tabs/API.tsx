@@ -22,7 +22,7 @@ const sendRequest = async (data: RequestData) => {
     const jsonResponse = await response.json();
     return jsonResponse;
   } catch (error) {
-    return { error: error instanceof Error ? error.message : "An unknown error occurred"};
+    return { error: error instanceof Error ? error.message : 'An unknown error occurred'};
   }
 };
 

@@ -10,19 +10,19 @@ export type PaletteTheme = 'light' | 'dark';
 */
 
 export const getDesignTokens = (mode: PaletteTheme) => ({
-    palette: {
-      mode,
-      ...(mode === 'light'
-        ? {
-            // palette values for light mode
-            primary: {
-              main: '#e8e1ef',
-            },
-            secondary: {
-                main: '#70c1b3',
-            },
-          }
-        : { /* palette values for dark mode  */ }
-      )
-    }
+  palette: {
+    mode,
+    ...(mode === 'light'
+      ? {
+        // palette values for light mode
+        primary: {
+          main: '#e8e1ef',
+        },
+        secondary: {
+          main: '#70c1b3',
+        },
+      }
+      : { /* palette values for dark mode  */ }
+    )
+  }
 });
