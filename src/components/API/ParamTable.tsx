@@ -1,5 +1,5 @@
-import { Box, Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField } from '@mui/material';
-import { FC, ReactElement, useState } from 'react'
+import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField } from '@mui/material';
+import { FC, ReactElement } from 'react'
 import DeleteIcon from '@mui/icons-material/Delete'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
 
@@ -29,7 +29,7 @@ const ParamTable: FC<Props> = ({ params, setParams}: Props): ReactElement => {
 
     return (
         <>
-            <TableContainer component={Paper} sx={{marginTop: '40px'}}>
+            <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} size='small' aria-label='Parameters table'>
                     <TableHead>
                         <TableRow>

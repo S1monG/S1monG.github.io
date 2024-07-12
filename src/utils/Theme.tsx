@@ -16,10 +16,10 @@ export const getDesignTokens = (mode: PaletteTheme) => ({
         ? {
             // palette values for light mode
             primary: {
-                main: '#e8e1efff',
+              main: '#e8e1ef',
             },
             secondary: {
-                main: '#d9fff8ff',
+                main: '#70c1b3',
             },
           }
         : { /* palette values for dark mode  */ }

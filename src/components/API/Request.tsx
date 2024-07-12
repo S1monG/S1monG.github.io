@@ -1,6 +1,8 @@
-import { Box, FormControl, InputLabel, Select, MenuItem, TextField, Button } from '@mui/material';
+import { Box, FormControl, InputLabel, Select, MenuItem, TextField, Button, Stack } from '@mui/material';
 import { FC, ReactElement, useState } from 'react'
-import ParamTable, { Param } from './ParamTable';
+import ParamTable, { Param } from './ParamTable'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import ExpandLessIcon from '@mui/icons-material/ExpandLess'
 
 export type RESTMethod = 'GET' | 'POST' | 'PUT' | 'DELETE';
 
@@ -13,7 +15,10 @@ const Request: FC<Props> = ({ sendRequest }: Props): ReactElement => {
     const [url, setUrl] = useState('')
 
     const [headerParams, setHeaderParams] = useState<Param[]>([{ key: '', value: '' }]);
+    const [showHeaderParams, setShowHeaderParams] = useState<boolean>(false);
+
     const [queryParams, setQueryParams] = useState<Param[]>([{ key: '', value: '' }]);
+    const [showQueryParams, setShowQueryParams] = useState<boolean>(false);
 
     return (
         <>
@@ -52,11 +57,27 @@ const Request: FC<Props> = ({ sendRequest }: Props): ReactElement => {
                 >Send</Button>
             </Box>
 
-            {/* Make titles clickable which reveals the Paramtable */}
-            <h2>Header Parameters</h2>
-            <ParamTable params={headerParams} setParams={setHeaderParams} />
-            <h2>Query Parameters</h2>
-            <ParamTable params={queryParams} setParams={setQueryParams} />
+            <Box display='flex' flexDirection='column' alignItems='start'>
+                <Button
+                    sx={{marginTop: '40px'}}
+                    onClick={() => setShowHeaderParams(!showHeaderParams)}
+                    endIcon={showHeaderParams ? <ExpandLessIcon/> : <ExpandMoreIcon/>}
+                    color='secondary'
+                >
+                    Header Parameters
+                </Button>
+                {showHeaderParams && <ParamTable params={headerParams} setParams={setHeaderParams} />}
+
+                <Button
+                    sx={{marginTop: '40px'}}
+                    onClick={() => setShowQueryParams(!showQueryParams)}
+                    endIcon={showQueryParams ? <ExpandLessIcon/> : <ExpandMoreIcon/>}
+                    color='secondary'
+                >
+                    Query Parameters
+                </Button>
+                {showQueryParams && <ParamTable params={queryParams} setParams={setQueryParams} />}
+            </Box> 
         </>
     )
 }
