@@ -19,6 +19,9 @@ const Request: FC<Props> = ({ sendRequest }: Props): ReactElement => {
   const [queries, setQueries] = useState<Parameter[]>([{ key: '', value: '' }])
   const [showQueries, setShowQueries] = useState(false)
 
+  const [body, setBody] = useState<string | undefined>(undefined)
+  const [showBody, setShowBody] = useState(false)
+
   return (
     <>
 
@@ -82,6 +85,24 @@ const Request: FC<Props> = ({ sendRequest }: Props): ReactElement => {
                     Query Parameters
         </Button>
         {showQueries && <ParamTable params={queries} setParams={setQueries} />}
+        
+        <Button
+          sx={{marginTop: '40px'}}
+          onClick={() => setShowBody(!showBody)}
+          endIcon={showQueries ? <ExpandLessIcon/> : <ExpandMoreIcon/>}
+          color='secondary'
+        >
+                    Raw Body
+        </Button>
+        {showBody && 
+          <TextField
+            value={body}
+            onChange={(event) => setBody(event.target.value)}
+            fullWidth
+            multiline
+            minRows={10}
+          />
+        }
       </Box> 
     </>
   )
