@@ -5,10 +5,10 @@ import { RequestData } from '../types/APIInterfaces'
 
 const sendRequest = async (data: RequestData) => {
   const headers = new Headers()
-  data.headers.forEach(header => headers.append(header.key, header.value))
+  data.headers.forEach(header => header.key && headers.append(header.key, header.value))
 
   const query = new URLSearchParams()
-  data.queries.forEach(param => query.append(param.key, param.value))
+  data.queries.forEach(param => param.key && query.append(param.key, param.value))
 
   try {
     const response = await fetch(`${data.url}?${query.toString()}`, 
