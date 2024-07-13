@@ -1,4 +1,4 @@
-export type RESTMethod = 'GET' | 'POST' | 'PUT' | 'DELETE';
+export type RESTMethod = 'GET' | 'POST' | 'PUT' | 'DELETE'
 
 export interface Parameter {
     key: string,

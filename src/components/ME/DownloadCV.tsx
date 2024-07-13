@@ -1,6 +1,6 @@
-import DownloadIcon from '@mui/icons-material/Download';
-import { Tooltip, IconButton } from '@mui/material';
-import { FC, ReactElement } from 'react';
+import DownloadIcon from '@mui/icons-material/Download'
+import { Tooltip, IconButton } from '@mui/material'
+import { FC, ReactElement } from 'react'
 
 const handleDownload = (): void => {
   const link = document.createElement('a')
@@ -18,7 +18,7 @@ const DownloadCV: FC = (): ReactElement => {
         <DownloadIcon/>
       </IconButton>
     </Tooltip>
-  );
+  )
 }
 
 export default DownloadCV

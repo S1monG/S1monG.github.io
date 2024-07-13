@@ -1,15 +1,15 @@
 import { FC, ReactElement, useMemo, useState } from 'react'
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { CssBaseline } from '@mui/material';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './components/Header';
-import CenteredTabs from './tabs/CenteredTabs';
-import Me from './tabs/Me';
-import API from './tabs/API';
+import { ThemeProvider, createTheme } from '@mui/material/styles'
+import { CssBaseline } from '@mui/material'
+import { HashRouter as Router, Routes, Route } from 'react-router-dom'
+import Header from './components/Header'
+import CenteredTabs from './tabs/CenteredTabs'
+import Me from './tabs/Me'
+import API from './tabs/API'
 
-import { PaletteTheme } from './utils/Theme';
-import { getDesignTokens } from './utils/Theme';
-import { ColorModeContext } from './utils/ColorModeContext';
+import { PaletteTheme } from './utils/Theme'
+import { getDesignTokens } from './utils/Theme'
+import { ColorModeContext } from './utils/ColorModeContext'
 
 const App: FC = (): ReactElement => {
 
@@ -35,4 +35,4 @@ const App: FC = (): ReactElement => {
   )
 }
 
-export default App;
+export default App

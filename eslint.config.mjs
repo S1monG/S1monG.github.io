@@ -19,7 +19,8 @@ export default [
     rules: {
       "react/react-in-jsx-scope": "off",
       "quotes": ["error", "single", { "avoidEscape": true, "allowTemplateLiterals": true }],
-      "indent": ["error", 2]
+      "indent": ["error", 2],
+      "semi": ["error", "never"],
     }
   },
 

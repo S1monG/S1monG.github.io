@@ -1,13 +1,13 @@
-import Box from '@mui/material/Box';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import { FC, ReactElement, useState } from 'react';
-import { Link } from 'react-router-dom';
+import Box from '@mui/material/Box'
+import Tabs from '@mui/material/Tabs'
+import Tab from '@mui/material/Tab'
+import { FC, ReactElement, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const CenteredTabs: FC = (): ReactElement => {
   const [tab, setTab] = useState(0)
   const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
-    setTab(newValue);
+    setTab(newValue)
   }
 
   return (

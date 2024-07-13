@@ -1,9 +1,9 @@
-import { Box, FormControl, InputLabel, Select, MenuItem, TextField, Button } from '@mui/material';
+import { Box, FormControl, InputLabel, Select, MenuItem, TextField, Button } from '@mui/material'
 import { FC, ReactElement, useState } from 'react'
 import ParamTable from './ParamTable'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import ExpandLessIcon from '@mui/icons-material/ExpandLess'
-import { Parameter, RequestData, RESTMethod } from '../../types/APIInterfaces';
+import { Parameter, RequestData, RESTMethod } from '../../types/APIInterfaces'
 
 interface Props {
     sendRequest: (data: RequestData) => void
@@ -13,11 +13,11 @@ const Request: FC<Props> = ({ sendRequest }: Props): ReactElement => {
   const [method, setMethod] = useState<RESTMethod>('GET')
   const [url, setUrl] = useState('')
 
-  const [headers, setHeaders] = useState<Parameter[]>([{ key: '', value: '' }]);
-  const [showHeaders, setShowHeaders] = useState(false);
+  const [headers, setHeaders] = useState<Parameter[]>([{ key: '', value: '' }])
+  const [showHeaders, setShowHeaders] = useState(false)
 
-  const [queries, setQueries] = useState<Parameter[]>([{ key: '', value: '' }]);
-  const [showQueries, setShowQueries] = useState(false);
+  const [queries, setQueries] = useState<Parameter[]>([{ key: '', value: '' }])
+  const [showQueries, setShowQueries] = useState(false)
 
   return (
     <>

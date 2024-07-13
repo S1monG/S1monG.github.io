@@ -1,5 +1,5 @@
 
-export type PaletteTheme = 'light' | 'dark';
+export type PaletteTheme = 'light' | 'dark'
 
 /* LIGHT MODE PALETTE
 --lavender-web: #e8e1efff;
@@ -25,4 +25,4 @@ export const getDesignTokens = (mode: PaletteTheme) => ({
       : { /* palette values for dark mode  */ }
     )
   }
-});
+})

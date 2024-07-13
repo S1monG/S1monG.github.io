@@ -1,8 +1,8 @@
-import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField } from '@mui/material';
+import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField } from '@mui/material'
 import { FC, ReactElement } from 'react'
 import DeleteIcon from '@mui/icons-material/Delete'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
-import { Parameter } from '../../types/APIInterfaces';
+import { Parameter } from '../../types/APIInterfaces'
 
 interface Props {
     params: Parameter[]
@@ -12,15 +12,15 @@ interface Props {
 const ParamTable: FC<Props> = ({ params, setParams}: Props): ReactElement => {
 
   const handleDelete = (index: number) => {
-    const newParams = [...params];
-    newParams.splice(index, 1);
-    setParams(newParams);
+    const newParams = [...params]
+    newParams.splice(index, 1)
+    setParams(newParams)
   }
 
   const handleAdd = () => {
-    const newParams = [...params];
-    newParams.push({ key: '', value: '' });
-    setParams(newParams);
+    const newParams = [...params]
+    newParams.push({ key: '', value: '' })
+    setParams(newParams)
   }
 
   return (
@@ -44,9 +44,9 @@ const ParamTable: FC<Props> = ({ params, setParams}: Props): ReactElement => {
                     variant='outlined'
                     value={param.key}
                     onChange={(event) => {
-                      const newParams = [...params];
-                      newParams[index].key = event.target.value;
-                      setParams(newParams);
+                      const newParams = [...params]
+                      newParams[index].key = event.target.value
+                      setParams(newParams)
                     }}
                   />
                 </TableCell>
@@ -58,9 +58,9 @@ const ParamTable: FC<Props> = ({ params, setParams}: Props): ReactElement => {
                     variant='outlined'
                     value={param.value}
                     onChange={(event) => {
-                      const newParams = [...params];
-                      newParams[index].value = event.target.value;
-                      setParams(newParams);
+                      const newParams = [...params]
+                      newParams[index].value = event.target.value
+                      setParams(newParams)
                     }}
                   />
                 </TableCell>
