@@ -1,8 +1,11 @@
 import { FC, ReactElement, useMemo, useState } from 'react'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import CenteredTabs from './tabs/CenteredTabs';
+import Me from './tabs/Me';
+import API from './tabs/API';
 
 import { PaletteTheme } from './utils/Theme';
 import { getDesignTokens } from './utils/Theme';
@@ -17,10 +20,17 @@ const App: FC = (): ReactElement => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <ColorModeContext.Provider value={{ themeMode, setThemeMode }}>
-        <Header title="Okayy lets go" />
-      </ColorModeContext.Provider>
-      <CenteredTabs />
+      <Router>
+        <ColorModeContext.Provider value={{ themeMode, setThemeMode }}>
+          <Header title="Okayy lets go" />
+        </ColorModeContext.Provider>
+        <CenteredTabs />
+        <Routes>
+          <Route path="/" element={<Me/>} />
+          <Route path="/api" element={<API/>} />
+          <Route path="/cache" element={<div>to be continued</div>} />
+        </Routes>
+      </Router>
     </ThemeProvider>
   )
 }
