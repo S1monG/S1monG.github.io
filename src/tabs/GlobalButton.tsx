@@ -1,5 +1,5 @@
 import {FC, ReactElement, useEffect, useState } from 'react'
-import { Box, Container, Button } from '@mui/material'
+import {Container, Button } from '@mui/material'
 
 
 
@@ -24,7 +24,7 @@ const GlobalButton: FC = (): ReactElement => {
 
   return (
     <Container>
-        <Button variant="contained" onClick={incrementCounter}>{counter}</Button>
+      <Button variant="contained" onClick={incrementCounter}>{counter}</Button>
     </Container>
   )
 }
