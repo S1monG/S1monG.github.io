@@ -6,6 +6,7 @@ import Header from './components/Header'
 import CenteredTabs from './tabs/CenteredTabs'
 import Me from './tabs/Me'
 import API from './tabs/API'
+import GlobalButton from './tabs/GlobalButton'
 
 import { PaletteTheme } from './utils/Theme'
 import { getDesignTokens } from './utils/Theme'
@@ -28,6 +29,7 @@ const App: FC = (): ReactElement => {
         <Routes>
           <Route path="/" element={<Me/>} />
           <Route path="/api" element={<API/>} />
+          <Route path="/simple-button" element={<GlobalButton/>} />
           <Route path="/cache" element={<div>to be continued</div>} />
         </Routes>
       </Router>
