@@ -7,12 +7,20 @@ const GlobalButton: FC = (): ReactElement => {
   const [counter, setCounter] = useState(5)
 
   useEffect(() => {
-    (async () => {
+    const fetchCounter = async () => {
       const response = await fetch('https://europe-west1-sigma-tractor-429314-n0.cloudfunctions.net/simplecounter')
       const jsonResponse = await response.json()
       const { counter } = jsonResponse
       setCounter(counter)
-    })()
+    }
+
+    fetchCounter()
+
+    const intervalId = setInterval(() => {
+      fetchCounter()
+    }, 5000)
+
+    return () => clearInterval(intervalId) // Cleanup on component unmount
   }, [])
 
   const incrementCounter = async () => {
