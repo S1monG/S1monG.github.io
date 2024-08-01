@@ -1,40 +1,39 @@
 import { FC, ReactElement, useState, useEffect } from 'react'
 import D3Graph, { Graph } from '../components/Dijkstras/D3Graph'
-import { Container, Divider, Stack } from '@mui/material'
+import { Container, Divider, MenuItem, Select, Stack } from '@mui/material'
+import DijkstrasResult from '../components/Dijkstras/DijkstrasResult'
 
 const DijkstrasAlgo: FC = (): ReactElement => {
 
-  const [graph, setGraph] = useState<Graph | null>(null)
+  const [selectedData, setSelectedData] = useState<string>('/small_graph_raw_data.in')
+  const [graph, setGraph] = useState<Graph>({})
 
   const featchData = async (graph_url: string) => {
     const rawFile = await fetch(graph_url)
     const rawData = await rawFile.text()
-
     const graph = parseGraph(rawData)
     setGraph(graph)
-    // const res = dijkstra(graph, 'A')
-    // console.log(res)
   }
 
   useEffect(() => {
-    featchData('/large_graph_raw_data.in')
-  }, [])
-
+    featchData(selectedData)
+  }, [selectedData])
 
   return (
-
     <Stack direction='row' height='100vh'>
       <Container sx={{ width: '40%' }}>
-        {!graph ? 
-          <p>Loading...</p> :
-          <D3Graph graph={graph} />
-        }
+        <Select size='small' value={selectedData} onChange={(event) => setSelectedData(event.target.value)}>
+          <MenuItem value='/small_graph_raw_data.in'>Small Graph</MenuItem>
+          <MenuItem value='/medium_graph_raw_data.in'>Medium Graph</MenuItem>
+          <MenuItem value='/large_graph_raw_data.in'>Large Graph</MenuItem>
+        </Select>
+        {!graph ? <p>Loading...</p> : <D3Graph graph={graph} />}
       </Container>
 
       <Divider orientation='vertical' flexItem />
 
       <Container sx={{ width: '60%' }}>
-        <p> Results </p>
+        <DijkstrasResult graph={graph} />
       </Container>
     </Stack>
   )
@@ -56,57 +55,6 @@ const parseGraph = (rawdata: string) => {
     graph[node][connectedNode] = parseInt(weight)
   }
   return graph
-}
-
-const dijkstra = (graph: Graph, start: string) => {
-  // Create an object to store the shortest distance from the start node to every other node
-  const distances: {[node: string]: number} = {}
-
-  // A set to keep track of all visited nodes
-  const visited = new Set()
-
-  // Get all the nodes of the graph
-  const nodes = Object.keys(graph)
-
-  // Initially, set the shortest distance to every node as Infinity
-  for (const node of nodes) {
-    distances[node] = Infinity
-  }
-    
-  // The distance from the start node to itself is 0
-  distances[start] = 0
-
-  // Loop until all nodes are visited
-  while (nodes.length) {
-    // Sort nodes by distance and pick the closest unvisited node
-    nodes.sort((a, b) => distances[a] - distances[b])
-    // closestNode will never be undefined because the loop runs a maximum of nodes.length times
-    const closestNode = nodes.shift() as string
-
-    // If the shortest distance to the closest node is still Infinity, then remaining nodes are unreachable and we can break
-    if (distances[closestNode] === Infinity) break
-
-    // Mark the chosen node as visited
-    visited.add(closestNode)
-
-    // For each neighboring node of the current node
-    for (const neighbor in graph[closestNode]) {
-      // If the neighbor hasn't been visited yet
-      if (!visited.has(neighbor)) {
-        // Calculate tentative distance to the neighboring node
-        const newDistance = distances[closestNode] + graph[closestNode][neighbor]
-                
-        // If the newly calculated distance is shorter than the previously known distance to this neighbor
-        if (newDistance < distances[neighbor]) {
-          // Update the shortest distance to this neighbor
-          distances[neighbor] = newDistance
-        }
-      }
-    }
-  }
-
-  // Return the shortest distance from the start node to all nodes
-  return distances
 }
 
 export default DijkstrasAlgo
