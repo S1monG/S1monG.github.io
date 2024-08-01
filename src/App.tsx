@@ -25,15 +25,15 @@ const App: FC = (): ReactElement => {
       <Router>
         <ColorModeContext.Provider value={{ themeMode, setThemeMode }}>
           <Header title="Okayy lets go" />
+          <CenteredTabs />
+          <Routes>
+            <Route path="/" element={<Me/>} />
+            <Route path="/api" element={<API/>} />
+            <Route path="/simple-button" element={<GlobalButton/>} />
+            <Route path="/dijkstras-algorithm" element={<DijkstrasAlgo/>} />
+            <Route path="/cache" element={<div>to be continued</div>} />
+          </Routes>
         </ColorModeContext.Provider>
-        <CenteredTabs />
-        <Routes>
-          <Route path="/" element={<Me/>} />
-          <Route path="/api" element={<API/>} />
-          <Route path="/simple-button" element={<GlobalButton/>} />
-          <Route path="/dijkstras-algorithm" element={<DijkstrasAlgo/>} />
-          <Route path="/cache" element={<div>to be continued</div>} />
-        </Routes>
       </Router>
     </ThemeProvider>
   )

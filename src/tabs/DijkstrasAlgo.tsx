@@ -1,27 +1,42 @@
-import { FC, ReactElement } from 'react'
+import { FC, ReactElement, useState, useEffect } from 'react'
 import D3Graph, { Graph } from '../components/Dijkstras/D3Graph'
-
-const test = `A B 1
-A C 4
-B A 1
-B C 2
-B D 5
-C A 4
-C B 2
-C D 1
-D B 5
-D C 1`
+import { Container, Divider, Stack } from '@mui/material'
 
 const DijkstrasAlgo: FC = (): ReactElement => {
 
-  const graph = parseGraph(test)
-  const res = dijkstra(graph, 'A')
-  console.log(res)
+  const [graph, setGraph] = useState<Graph | null>(null)
+
+  const featchData = async (graph_url: string) => {
+    const rawFile = await fetch(graph_url)
+    const rawData = await rawFile.text()
+
+    const graph = parseGraph(rawData)
+    setGraph(graph)
+    // const res = dijkstra(graph, 'A')
+    // console.log(res)
+  }
+
+  useEffect(() => {
+    featchData('/large_graph_raw_data.in')
+  }, [])
+
 
   return (
-    <>
-      <D3Graph graph={graph} />
-    </>
+
+    <Stack direction='row' height='100vh'>
+      <Container sx={{ width: '40%' }}>
+        {!graph ? 
+          <p>Loading...</p> :
+          <D3Graph graph={graph} />
+        }
+      </Container>
+
+      <Divider orientation='vertical' flexItem />
+
+      <Container sx={{ width: '60%' }}>
+        <p> Results </p>
+      </Container>
+    </Stack>
   )
 }
 
