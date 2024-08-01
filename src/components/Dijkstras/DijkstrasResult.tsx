@@ -39,7 +39,7 @@ const DijkstrasResult: FC<Props> = ({ graph }): ReactElement => {
             <Typography fontSize='large'>
               Run Dijkstras Algorithm in two different enviorments and compare their parse and runtime.
               The first one is run client side on the host machine and the second one is run in a serverless function.
-              TODO: specify specs of the serverless solution.
+              TODO: specify specs of the cloud enviorment.
             </Typography>}
         >
           <InfoOutlinedIcon fontSize='large'/>
