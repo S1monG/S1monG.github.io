@@ -3,13 +3,8 @@
 // Welcome to no mans land, dont touch if its working!!!
 import {FC, ReactElement, useRef, useEffect, useContext } from 'react'
 import { ColorModeContext } from '../../utils/ColorModeContext'
+import { Graph } from '../../utils/DijkstrasAlgorithm'
 import * as d3 from 'd3'
-
-export interface Graph {
-  [node: string]: {
-    [connectedNode: string]: number;
-  };
-}
 
 interface D3GraphProps {
   graph: Graph;
