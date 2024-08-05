@@ -11,15 +11,21 @@ interface Props {
 }
 
 interface ResultType {
+  result: {[node: string]: number}
+}
+
+interface TimeType {
   parseTime: number
   runTime: number
-  result: {[node: string]: number}
+  sendToServer?: number
 }
 
 const DijkstrasResult: FC<Props> = ({ graphDataFile }): ReactElement => {
 
   const [startNode, setStartNode] = useState<string>('')
   const [result, setResult] = useState<ResultType>({} as ResultType)
+  const [serverResult, setServerResult] = useState<TimeType>({} as TimeType)
+  const [clientResult, setClientResult] = useState<TimeType>({} as TimeType)
   const [showResult, setShowResult] = useState<boolean>(false)
 
   const runDijkstras = async () => {
@@ -28,9 +34,27 @@ const DijkstrasResult: FC<Props> = ({ graphDataFile }): ReactElement => {
     const { graph, parseTime } = parseGraph(rawData)
     const { distances, runTime } = dijkstra(graph, startNode)
     setResult({
-      parseTime,
-      runTime,
       result: distances
+    })
+    setClientResult({
+      parseTime,
+      runTime
+    })
+
+    const serverStartTime = Date.now()
+    const response = await fetch(`https://europe-west1-sigma-tractor-429314-n0.cloudfunctions.net/dijkstra?startNode=${encodeURIComponent(startNode)}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(rawData)
+    })
+    const serverResult = await response.json()
+    const serverEndTime = Date.now()
+    setServerResult({
+      parseTime: serverResult.parseTime,
+      runTime: serverResult.runTime,
+      sendToServer: serverEndTime - serverStartTime,
     })
   }
 
@@ -62,11 +86,11 @@ const DijkstrasResult: FC<Props> = ({ graphDataFile }): ReactElement => {
           <InfoOutlinedIcon fontSize='large'/>
         </Tooltip>
       </Box>
-      {result.result && 
+      {(clientResult || serverResult) && 
         <>
           <Box display='flex' flexDirection='row'>
-            <TimeResultVisual parseTime={result.parseTime} runTime={result.runTime} showLabels={false}/>
-            <TimeResultVisual parseTime={result.parseTime} runTime={result.runTime} showLabels={true}/>
+            <TimeResultVisual parseTime={clientResult.parseTime} runTime={clientResult.runTime} showLabels={false}/>
+            <TimeResultVisual parseTime={serverResult.parseTime} runTime={serverResult.runTime} showLabels={true}/>
           </Box>
           <Button
             sx={{marginTop: '40px'}}
