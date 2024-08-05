@@ -22,7 +22,7 @@ const CenteredTabs: FC = (): ReactElement => {
         <Tab label="Me" to="/" component={Link}/>
         <Tab label="API Platform" to="/api" component={Link} />
         <Tab label="Simple Button" to="/simple-button" component={Link} />
-        <Tab label="Dijkstras Algorithm" to="/dijkstras-algorithm" component={Link} />
+        <Tab label="WIP Dijkstras Algorithm" to="/dijkstras-algorithm" component={Link} />
         <Tab label="to be continued" to="/cache" component={Link} disabled />
       </Tabs>
     </Box>
