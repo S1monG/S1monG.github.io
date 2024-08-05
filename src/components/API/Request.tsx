@@ -89,7 +89,7 @@ const Request: FC<Props> = ({ sendRequest }: Props): ReactElement => {
         <Button
           sx={{marginTop: '40px'}}
           onClick={() => setShowBody(!showBody)}
-          endIcon={showQueries ? <ExpandLessIcon/> : <ExpandMoreIcon/>}
+          endIcon={showBody ? <ExpandLessIcon/> : <ExpandMoreIcon/>}
           color='secondary'
         >
                     Raw Body

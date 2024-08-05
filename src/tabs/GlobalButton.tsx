@@ -4,7 +4,7 @@ import { Button, Typography, Box } from '@mui/material'
 
 
 const GlobalButton: FC = (): ReactElement => {
-  const [counter, setCounter] = useState(5)
+  const [counter, setCounter] = useState(undefined)
 
   useEffect(() => {
     const fetchCounter = async () => {

@@ -7,6 +7,7 @@ import CenteredTabs from './tabs/CenteredTabs'
 import Me from './tabs/Me'
 import API from './tabs/API'
 import GlobalButton from './tabs/GlobalButton'
+import DijkstrasGraph from './tabs/DijkstrasGraph'
 
 import { PaletteTheme } from './utils/Theme'
 import { getDesignTokens } from './utils/Theme'
@@ -24,14 +25,15 @@ const App: FC = (): ReactElement => {
       <Router>
         <ColorModeContext.Provider value={{ themeMode, setThemeMode }}>
           <Header title="Okayy lets go" />
+          <CenteredTabs />
+          <Routes>
+            <Route path="/" element={<Me/>} />
+            <Route path="/api" element={<API/>} />
+            <Route path="/simple-button" element={<GlobalButton/>} />
+            <Route path="/dijkstras-algorithm" element={<DijkstrasGraph/>} />
+            <Route path="/cache" element={<div>to be continued</div>} />
+          </Routes>
         </ColorModeContext.Provider>
-        <CenteredTabs />
-        <Routes>
-          <Route path="/" element={<Me/>} />
-          <Route path="/api" element={<API/>} />
-          <Route path="/simple-button" element={<GlobalButton/>} />
-          <Route path="/cache" element={<div>to be continued</div>} />
-        </Routes>
       </Router>
     </ThemeProvider>
   )
