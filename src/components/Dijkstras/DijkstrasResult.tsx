@@ -49,12 +49,12 @@ const DijkstrasResult: FC<Props> = ({ graphDataFile }): ReactElement => {
       },
       body: JSON.stringify(rawData)
     })
-    const serverResult = await response.json()
     const serverEndTime = Date.now()
+    const serverResult = await response.json()
     setServerResult({
       parseTime: serverResult.parseTime,
       runTime: serverResult.runTime,
-      sendToServer: serverEndTime - serverStartTime,
+      sendToServer: serverEndTime - serverStartTime - serverResult.parseTime - serverResult.runTime,
     })
   }
 
@@ -90,7 +90,7 @@ const DijkstrasResult: FC<Props> = ({ graphDataFile }): ReactElement => {
         <>
           <Box display='flex' flexDirection='row'>
             <TimeResultVisual parseTime={clientResult.parseTime} runTime={clientResult.runTime} showLabels={false}/>
-            <TimeResultVisual parseTime={serverResult.parseTime} runTime={serverResult.runTime} showLabels={true}/>
+            <TimeResultVisual parseTime={serverResult.parseTime} runTime={serverResult.runTime} sendToServer={serverResult.sendToServer} showLabels={true}/>
           </Box>
           <Button
             sx={{marginTop: '40px'}}
