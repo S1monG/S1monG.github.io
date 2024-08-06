@@ -45,7 +45,7 @@ const DijkstrasResult: FC<Props> = ({ graphDataFile }): ReactElement => {
     const response = await fetch(`https://europe-west1-sigma-tractor-429314-n0.cloudfunctions.net/dijkstra?startNode=${encodeURIComponent(startNode)}`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'text/plain'
       },
       body: JSON.stringify(rawData)
     })
