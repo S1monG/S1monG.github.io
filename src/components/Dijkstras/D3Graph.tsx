@@ -7,7 +7,7 @@ import { Graph } from '../../utils/DijkstrasAlgorithm'
 import * as d3 from 'd3'
 
 interface D3GraphProps {
-  graph: Graph;
+  graph: Graph
 }
 
 const D3Graph: FC<D3GraphProps> = ({ graph }): ReactElement => {

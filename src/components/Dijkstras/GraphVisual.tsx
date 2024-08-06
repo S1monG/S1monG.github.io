@@ -9,8 +9,7 @@ interface Props {
 }
 
 const GraphVisual: FC<Props> = ({selectedData, setSelectedData }): ReactElement => {
-    
-  
+
   const [graph, setGraph] = useState<Graph>({})
   
   const featchData = async (graph_url: string) => {
@@ -20,20 +19,21 @@ const GraphVisual: FC<Props> = ({selectedData, setSelectedData }): ReactElement 
   }
   
   useEffect(() => {
+    if (selectedData === '/graph_2000_nodes.in' || selectedData === '/graph_10000_nodes.in') return
     featchData(selectedData)
   }, [selectedData])
 
   return (
     <>
       <Select size='small' value={selectedData} onChange={(event) => setSelectedData(event.target.value)}>
-        <MenuItem value='/small_graph_raw_data.in'>Small Graph</MenuItem>
-        <MenuItem value='/medium_graph_raw_data.in'>Medium Graph</MenuItem>
-        <MenuItem value='/large_graph_raw_data.in'>Large Graph</MenuItem>
-        <MenuItem value='/mega_graph_raw_data.in'>Mega Graph</MenuItem>
+        <MenuItem value='/graph_10_nodes.in'>Small Graph</MenuItem>
+        <MenuItem value='/graph_50_nodes.in'>Medium Graph</MenuItem>
+        <MenuItem value='/graph_2000_nodes.in'>Large Graph</MenuItem>
+        <MenuItem value='/graph_10000_nodes.in'>Mega Graph</MenuItem>
       </Select>
       {!graph ? (
         <p>Loading...</p>
-      ) : selectedData === '/mega_graph_raw_data.in' ? (
+      ) : selectedData === '/graph_2000_nodes.in' || selectedData === '/graph_10000_nodes.in' ? (
         <p> too big</p> 
       ) : (
         <D3Graph graph={graph} />

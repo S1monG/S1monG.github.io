@@ -5,7 +5,7 @@ import GraphVisual from '../components/Dijkstras/GraphVisual'
 
 const Dijkstra: FC = (): ReactElement => {
 
-  const [selectedData, setSelectedData] = useState<string>('/small_graph_raw_data.in')
+  const [selectedData, setSelectedData] = useState<string>('/graph_10_nodes.in')
 
   return (
     <Stack direction='row' height='100vh'>
