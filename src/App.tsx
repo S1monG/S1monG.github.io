@@ -7,7 +7,7 @@ import CenteredTabs from './tabs/CenteredTabs'
 import Me from './tabs/Me'
 import API from './tabs/API'
 import GlobalButton from './tabs/GlobalButton'
-import DijkstrasGraph from './tabs/DijkstrasGraph'
+import Dijkstra from './tabs/Dijkstra'
 
 import { PaletteTheme } from './utils/Theme'
 import { getDesignTokens } from './utils/Theme'
@@ -30,7 +30,7 @@ const App: FC = (): ReactElement => {
             <Route path="/" element={<Me/>} />
             <Route path="/api" element={<API/>} />
             <Route path="/simple-button" element={<GlobalButton/>} />
-            <Route path="/dijkstras-algorithm" element={<DijkstrasGraph/>} />
+            <Route path="/dijkstras-algorithm" element={<Dijkstra/>} />
             <Route path="/cache" element={<div>to be continued</div>} />
           </Routes>
         </ColorModeContext.Provider>
