@@ -1,18 +1,18 @@
-import { FC, ReactElement } from 'react'
-import { Paper, Stack } from '@mui/material'
+import { FC, ReactElement, useContext } from 'react'
+import { Paper } from '@mui/material'
+import { ColorModeContext } from '../../utils/ColorModeContext'
 
 const CurriculumVitae: FC = (): ReactElement => {
+
+  const { themeMode, setThemeMode } = useContext(ColorModeContext)
+  
   return (
-    <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
-      {/* First page */}
-      <Paper elevation={3}>
-        <img src="/cvPart1.jpg" alt="Curriculum Vitae" style={{maxWidth: '100%', height: 'auto'}}></img>
-      </Paper>
-      {/* Second Page */}
-      <Paper elevation={3}>
-        <img src="/cvPart2.jpg" alt="Curriculum Vitae" style={{maxWidth: '100%', height: 'auto'}}></img>
-      </Paper>
-    </Stack>
+    <Paper elevation={3}>
+      {themeMode === 'light' ?
+          <img src="/cv.jpg" alt="Curriculum Vitae" style={{maxWidth: '100%', height: 'auto'}}></img>
+        : <img src="/cv_black.jpg" alt="Curriculum Vitae" style={{maxWidth: '100%', height: 'auto'}}></img>
+      }
+    </Paper>
   )
 }
 
